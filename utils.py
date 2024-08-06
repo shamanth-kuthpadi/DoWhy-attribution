@@ -17,6 +17,11 @@ def load_from_txt(filepath):
     data = pd.read_csv(filepath, sep='\t')
     return data
 
+# load from csv file to pandas dataframe
+def load_from_csv(filepath):
+    data = pd.read_csv(filepath)
+    return data
+
 # rename nodes in a networkx if they are integers
 def rename_nodes(G, new_node_names):
     mapping = {old_name: new_name for old_name, new_name in zip(G.nodes(), new_node_names)}
@@ -85,5 +90,3 @@ def create_gradient_boost_regressor(**kwargs):
 def gcm(X, Y, Z=None):
     return gvm.generalised_cov_based(X, Y, Z=Z, prediction_model_X=create_gradient_boost_regressor,
                                  prediction_model_Y=create_gradient_boost_regressor)
-
-# plotter/visualizer that is going to visualize my metrics for me
